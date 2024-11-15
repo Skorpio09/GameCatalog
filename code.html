@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prolog Програма за Играчи</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Prolog Програма за Играчи</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li>Code</li>
+          <li><a href="tasks.html">About</a></li>
+        </ul>
+      </nav>
+
+      <h2>Prolog Код</h2>
+      <pre>
+% Факти
+game(roblox,online_game,multiplayer,2006).
+game(league_of_Legends,battle_arena_game,multiplayer,2009).
+game(valorant,first_person_shooter_game,multiplayer,2020).
+game(sims,life_simulation_video_game,singleplayer,2000).
+game(brawl_stars,battle_royale_game,multiplayer,2017).
+game(fortnite,battle_royale_game,multiplayer,2017).
+game(war_Thunder,vehicular_combat,multiplayer,2012).
+game(minecraft, sandbox_game,multiplayer,2011).
+game(counter_Strike,first_person_shooter,multiplayer,2000).
+game(cooking_Mama,cooking_simolator,singleplayer,2006).
+game(gta_5,action_adventure,multiplayer,2013).
+game(stardew_Valley,farm_life_sim,multiplayer,2016).
+game(project_SEKAI,rhythm_game,multiplayer,2020).
+game(beamNG_drive,vehicle_simulation,multiplayer,2013).
+game(pUBG,battle_royale_game,multiplayer,2018).
+game(call_of_Duty,first_person_shooter_game,multiplayer,2003).
+game(final_Fantasy_VII_Rebirth,action_role_playing,singleplayer,2024).
+game(fc24,simulation_sports_game,multiplayer,2023).
+game(red_dead_redemption_2,action_adventure_game,singleplayer,2018).
+game(ghost_of_tsushima,action_adventure_game,singleplayer,2020).
+game(god_of_war_ragnarok,action_adventure,singleplayer,2022).
+game(forza_horison_5,racing_video_game, multiplayer,2021).
+game(assasins_creed_mirage,action_adventure_game,singleplayer,2023).
+game(fall_guys,battle_royale_game,multiplayer,2020).
+game(nfs_underground_2,racing_video_game, singleplayer,2004).
+game(diablo_IV,adventure_game,multiplayer,2023).
+game(hearthstone,collectible_card_game,multiplayer,2014).
+game(clash_royale,action_role_playing_game,multiplayer,2016).
+game(squad_busters,action_role_playing_game,multiplayer,2024).
+game(hello_neighbor_2,horror_game,singleplayer,2021).
+game(the_forrest,survival_horror_game,singleplayer,2014).
+game(dead_by_daylight,survival_horror_game,multiplayer,2016).
+game(hill_climb_racing_2,racing_game,multyplayer,2016).
+game(hydroneer,simulation_adventure_game,singleplayer,2020).
+game(rocket_league,action_sport_game,multiplayer,2015).
+game(brawlhalla,fight_game,multiplayer,2017).
+game(lineage_II,role_playing_game,multiplayer,2004).
+        
+% Query 1: изброява всички игри в базата данни, показвайки името, жанра, сингълплейър/мултиплейър и годината на пускане на пазара.
+all_games(Name, Genre, Type, Year) :- game(Name, Genre, Type, Year).
+        
+% Query 2: намира всички игри от определен жанр (например стрелба_от_първо_лице, first_person_shooter_game) и показва техните имена, сингълплейър/мултиплейър и години на излизане на пазара. 
+games_by_genre(Name, Type, Year, Genre) :- game(Name, Genre, Type, Year), Genre = first_person_shooter_game.
+        
+% Query 3: намира всички игри, излезли на пазара след определена година, и показва техните имена, жанрове, сингълплейър/мултиплейър и години на излизане на пазара.
+games_after_year(Name, Genre, Type, Year) :- game(Name, Genre, Type, Year), Year > 2019.
+        
+% Query 4:  намира всички игри от определено име (например PUBG, War_Thunder) и показва техните жанрове, имена и години на излизане на пазара.
+games_by_type(Name, Genre, Type, Year) :- game(Name, Genre, Type, Year), Type = singleplayer.
+        
+% Query 5: намира всички игри, излезли на пазара след определена година и от сингълплейър/мултиплейър (например multiplayer), и показва техните имена, модели и години на излизане на пазара.
+games_before_year_and_type(Name, Type, Year, Genre) :- game(Name, Genre, Type, Year), Year < 2018, Type = singleplayer.
+      </pre>
+    </div>
+  </body>
+</html>
